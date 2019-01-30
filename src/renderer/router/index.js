@@ -18,45 +18,45 @@ export default new Router({
           children: [
             {
               path: '/',
-              redirect: { name: 'recommend' },
+              redirect: { name: 'recommend' }
             },
             {
               path: '/recommend',
               name: 'recommend',
-              component: require('@/views/Discovery/Recommend/Recommend.vue').default,
+              component: require('@/views/Discovery/Recommend/Recommend.vue').default
             },
             {
               path: '/song',
               name: 'song',
-              component: require('@/views/Discovery/Song/Song.vue').default,
+              component: require('@/views/Discovery/Song/Song.vue').default
             },
             {
               path: '/radio',
               name: 'radio',
-              component: require('@/views/Discovery/Radio/Radio.vue').default,
+              component: require('@/views/Discovery/Radio/Radio.vue').default
             },
             {
               path: '/ranking',
               name: 'ranking',
-              component: require('@/views/Discovery/Ranking/Ranking.vue').default,
+              component: require('@/views/Discovery/Ranking/Ranking.vue').default
             },
             {
               path: '/singer',
               name: 'singer',
-              component: require('@/views/Discovery/Singer/Singer.vue').default,
+              component: require('@/views/Discovery/Singer/Singer.vue').default
             },
             {
               path: '/latest',
               name: 'latest',
-              component: require('@/views/Discovery/Latest/Latest.vue').default,
-            },
-          ],
-        },
-      ],
+              component: require('@/views/Discovery/Latest/Latest.vue').default
+            }
+          ]
+        }
+      ]
     },
     {
       path: '*',
-      redirect: '/',
-    },
-  ],
+      redirect: '/'
+    }
+  ]
 });

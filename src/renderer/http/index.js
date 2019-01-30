@@ -7,8 +7,8 @@ const toLogin = (router) => {
   router.replace({
     path: '/login',
     query: {
-      redirect: router.currentRoute.fullPath,
-    },
+      redirect: router.currentRoute.fullPath
+    }
   });
 };
 
@@ -75,7 +75,7 @@ const createAxios = (options, router) => {
 
 const instance = createAxios(
   {
-    baseURL: BASE_URL,
+    baseURL: BASE_URL
   },
   router,
 );

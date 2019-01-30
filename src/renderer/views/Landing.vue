@@ -13,7 +13,8 @@ import { Sidebar, Player } from '@/components';
 
 export default {
   name: 'landing',
-  components: { Sidebar, Player },
+
+  components: { Sidebar, Player }
 };
 </script>
 

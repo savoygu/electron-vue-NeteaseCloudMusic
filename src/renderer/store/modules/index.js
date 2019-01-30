@@ -13,7 +13,7 @@ files.keys().forEach((key) => {
   modules[key.replace(/(\.\/|\.js)/g, '')] = moduleData.hasNamespace
     ? {
       namespaced: true,
-      ...moduleData.module,
+      ...moduleData.module
     }
     : moduleData;
 });

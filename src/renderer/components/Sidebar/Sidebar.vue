@@ -37,22 +37,26 @@ import { ipcRenderer as ipc } from 'electron';
 
 export default {
   name: 'Sidebar',
+
   data() {
     return {
-      ipc,
+      ipc
     };
   },
+
   methods: {
     handleClose() {
       this.ipc.send('close');
     },
+
     handleMinimize() {
       this.ipc.send('min');
     },
+
     handleMaximize() {
       this.ipc.send('max');
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -6,7 +6,7 @@
 export default {
   name: 'Player',
   methods: {
-  },
+  }
 };
 </script>
 

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'electron-vue-neteasecloudmusic',
+  name: 'electron-vue-neteasecloudmusic'
 };
 </script>
 

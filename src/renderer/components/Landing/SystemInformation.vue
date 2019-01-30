@@ -39,9 +39,9 @@
         node: process.versions.node,
         path: this.$route.path,
         platform: require('os').platform(),
-        vue: require('vue/package.json').version,
+        vue: require('vue/package.json').version
       };
-    },
+    }
   };
 </script>
 

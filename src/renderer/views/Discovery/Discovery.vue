@@ -19,15 +19,18 @@ import Recommend from './Recommend/Recommend';
 
 export default {
   name: 'Discovery',
+
   components: {
-    Recommend,
+    Recommend
   },
-  created() { },
+
   methods: {
     handleCount() {
       this.$store.dispatch('someAsyncTask');
-    },
+    }
   },
+
+  created() { }
 };
 </script>
 
@@ -44,7 +47,7 @@ export default {
     margin-left: 15px;
     font-size: 14px;
     line-height: 52px;
-    color: #111;
+    color: $--color-text-primary;
   }
 
   @include e(nav-item) {

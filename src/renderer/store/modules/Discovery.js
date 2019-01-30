@@ -1,7 +1,7 @@
-import { fetch } from '@/http';
+import { fetch } from '@/http/index';
 
 const state = {
-  main: 0,
+  main: 0
 };
 
 const mutations = {
@@ -10,7 +10,7 @@ const mutations = {
   },
   INCREMENT_MAIN_COUNTER(state) {
     state.main += 1;
-  },
+  }
 };
 
 const actions = {
@@ -19,12 +19,12 @@ const actions = {
     commit('INCREMENT_MAIN_COUNTER');
     const data = await fetch('/personalized');
     return data;
-  },
+  }
 };
 
 export default {
   namespaced: true,
   state,
   mutations,
-  actions,
+  actions
 };
