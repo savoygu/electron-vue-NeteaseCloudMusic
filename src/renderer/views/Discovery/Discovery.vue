@@ -36,9 +36,7 @@ export default {
 
 <style lang="scss">
 @include b(discovery) {
-  @include e(top) {
-    //body
-  }
+  flex: 0 0 800px;
 
   @include e(nav) {
     display: flex;

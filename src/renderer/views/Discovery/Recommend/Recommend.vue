@@ -1,8 +1,22 @@
 <template>
   <div class="recommend">
     <div class="recommend__hero">
-      <carousel>
-        <carousel-item></carousel-item>
+      <carousel
+        class="recommend__banner"
+        type="card"
+        indicator-position="top"
+        indicator-type="dot"
+        from="netease"
+        height="220px"
+        :autoplay="false"
+        mask
+      >
+        <carousel-item class="recommend__banner-item" v-for="item in banners">
+          <div class="recommend__banner-details">
+            <img :src="item.imageUrl" alt>
+            <span class="recommend__banner-flag">{{item.typeTitle}}</span>
+          </div>
+        </carousel-item>
       </carousel>
     </div>
     <!-- 推荐歌单 -->
@@ -27,7 +41,7 @@
 
 <script>
 import { Carousel, CarouselItem } from '@/components';
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'Recommend',
@@ -41,19 +55,94 @@ export default {
     return {};
   },
 
+  computed: {
+    ...mapState('Discovery', ['banners', 'songList'])
+  },
+
   methods: {
-    ...mapActions(['someAsyncTask', 'Discovery/getRecommendSongList'])
+    ...mapActions('Discovery', [
+      'getRecommendSongList',
+      'getBanners'
+    ])
   },
 
   async created() {
-    const data = await this['Discovery/getRecommendSongList']();
-    console.log(data); //eslint-disable-line
+    await this.getBanners();
+    await this.getRecommendSongList();
   }
 };
 </script>
 
 <style lang="scss">
 @include b(recommend) {
-  //body
+  width: 100%;
+
+  @include e(hero) {
+    width: 742px;
+    margin: 0 auto;
+  }
+
+  @include e(banner) {
+    .carousel__mask {
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: 1;
+    }
+
+    .carousel__item--card {
+      &.is-in-stage {
+        &:hover .carousel__mask,
+        &.is-hover .carousel__mask {
+          opacity: 1;
+        }
+      }
+    }
+
+    .carousel__arrow {
+      color: #717171;
+      margin-top: 11px;
+      background-color: transparent;
+
+      &:hover {
+        background-color: transparent;
+      }
+
+      .icon-right,
+      .icon-left {
+        font-size: 24px;
+      }
+    }
+  }
+
+  @include e(banner-item) {
+    width: 600px;
+    height: 220px;
+    margin-top: 11px;
+    transition: all 0.6s;
+    border-radius: 10px;
+
+    @include is(active) {
+      margin-top: 0px;
+    }
+  }
+
+  @include e(banner-details) {
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+  }
+
+  @include e(banner-flag) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 6px 12px;
+    color: white;
+    background: $--color-text-active;
+    border-top-left-radius: 6px;
+    border-bottom-right-radius: 5px;
+  }
 }
 </style>

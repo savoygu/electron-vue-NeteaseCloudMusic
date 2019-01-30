@@ -1,24 +1,26 @@
-import { fetch } from '@/http/index';
+import { fetch } from '@/http';
+
+const SET_STATE_DATA = 'SET_STATE_DATA';
 
 const state = {
-  main: 0
+  banners: [],
+  songList: []
 };
 
 const mutations = {
-  DECREMENT_MAIN_COUNTER(state) {
-    state.main -= 1;
-  },
-  INCREMENT_MAIN_COUNTER(state) {
-    state.main += 1;
+  [SET_STATE_DATA](state, { name, value }) {
+    state[name] = value;
   }
 };
 
 const actions = {
+  async getBanners({ commit }) {
+    const data = await fetch('/banner');
+    commit(SET_STATE_DATA, { name: 'banners', value: data.banners });
+  },
   async getRecommendSongList({ commit }) {
-    // do something async
-    commit('INCREMENT_MAIN_COUNTER');
     const data = await fetch('/personalized');
-    return data;
+    commit(SET_STATE_DATA, { name: 'songList', value: data });
   }
 };
 

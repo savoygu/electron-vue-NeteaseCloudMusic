@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="carouselItem"
     v-show="ready"
     class="carousel__item"
     :class="{
@@ -23,6 +24,8 @@
 
 <script>
 const CARD_SCALE = 0.83;
+const NETEASE_CARD_SCALE = 0.9;
+
 export default {
   name: 'CarouselItem',
 
@@ -65,15 +68,25 @@ export default {
     },
 
     calculateTranslate(index, activeIndex, parentWidth) {
+      const scale = this.$parent.from === 'netease' ? NETEASE_CARD_SCALE : CARD_SCALE;
+      const itemWidth = this.$refs.carouselItem.offsetWidth;
+      const sideWidth = (parentWidth - itemWidth) / 2;
+      const halfItemWidth = itemWidth / 2;
+
       if (this.inStage) {
-        return parentWidth * ((2 - CARD_SCALE) * (index - activeIndex) + 1) / 4;
+        // return ((2 - CARD_SCALE) * (index - activeIndex) + 1) * parentWidth / 4;
+        return (index - activeIndex + 1) * sideWidth +
+          halfItemWidth * (1 - scale) * (index - activeIndex);
       } else if (index < activeIndex) {
-        return -(1 + CARD_SCALE) * parentWidth / 4;
+        // return -(1 + CARD_SCALE) * parentWidth / 4;
+        return -(1 + scale) * halfItemWidth;
       }
-      return (3 + CARD_SCALE) * parentWidth / 4;
+      // return (3 + CARD_SCALE) * parentWidth / 4;
+      return (1 + scale) * halfItemWidth + 2 * sideWidth;
     },
 
     translateItem(index, activeIndex, oldIndex) {
+      const scale = this.$parent.from === 'netease' ? NETEASE_CARD_SCALE : CARD_SCALE;
       const parentWidth = this.$parent.$el.offsetWidth;
       const length = this.$parent.items.length;
       if (this.$parent.type !== 'card' && oldIndex !== undefined) {
@@ -86,7 +99,7 @@ export default {
         this.inStage = Math.round(Math.abs(index - activeIndex)) <= 1;
         this.active = index === activeIndex;
         this.translate = this.calculateTranslate(index, activeIndex, parentWidth);
-        this.scale = this.active ? 1 : CARD_SCALE;
+        this.scale = this.active ? 1 : scale;
       } else {
         this.active = index === activeIndex;
         this.translate = parentWidth * (index - activeIndex);

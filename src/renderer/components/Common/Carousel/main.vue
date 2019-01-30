@@ -1,7 +1,10 @@
 <template>
   <div
     class="carousel"
-    :class="{ 'carousel--card': type === 'card' }"
+    :class="{
+      'carousel--card': type === 'card',
+      'carousel__indicators--top': indicatorPosition === 'top'
+    }"
     @mouseenter.stop="handleMouseEnter"
     @mouseleave.stop="handleMouseLeave"
   >
@@ -16,7 +19,7 @@
           @click.stop="throttledArrowClick(activeIndex - 1)"
           class="carousel__arrow carousel__arrow--left"
         >
-          <i class="el-icon-arrow-left"></i>
+          <i class="iconfont icon-left"></i>
         </button>
       </transition>
       <transition name="carousel-arrow-right">
@@ -29,7 +32,7 @@
           @click.stop="throttledArrowClick(activeIndex + 1)"
           class="carousel__arrow carousel__arrow--right"
         >
-          <i class="el-icon-arrow-right"></i>
+          <i class="iconfont icon-right"></i>
         </button>
       </transition>
       <slot></slot>
@@ -37,7 +40,7 @@
     <ul
       class="carousel__indicators"
       v-if="indicatorPosition !== 'none'"
-      :class="{ 'carousel__indicators--labels': hasLabel, 'carousel__indicators--outside': indicatorPosition === 'outside' || type === 'card' }"
+      :class="{ 'carousel__indicators--labels': hasLabel, 'carousel__indicators--outside': indicatorPosition === 'outside' || type === 'card',  'carousel__indicators--dot': indicatorType === 'dot' }"
     >
       <li
         v-for="(item, index) in items"
@@ -80,6 +83,7 @@ export default {
       default: 3000
     },
     indicatorPosition: String,
+    indicatorType: String,
     indicator: {
       type: Boolean,
       default: true
@@ -89,6 +93,7 @@ export default {
       default: 'hover'
     },
     type: String,
+    from: String,
     loop: {
       type: Boolean,
       default: true
@@ -351,6 +356,39 @@ $--carousel-indicator-out-color: #c0c4cc !default;
       button {
         background-color: $--carousel-indicator-out-color;
         opacity: 0.24;
+      }
+    }
+
+    @include m(top) {
+      padding-top: #{$--carousel-indicator-height +
+        $--carousel-indicator-padding-vertical * 2};
+
+      .carousel__indicators {
+        top: 0;
+        bottom: auto;
+        text-align: center;
+        position: absolute;
+        transform: translateX(-50%);
+      }
+    }
+
+    @include m(dot) {
+      .carousel__button {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #e4e4e4;
+        opacity: 1;
+      }
+
+      .carousel__indicator {
+        &.is-active,
+        &:hover {
+          .carousel__button {
+            background-color: #d33a31;
+            opacity: 1;
+          }
+        }
       }
     }
 
