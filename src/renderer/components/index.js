@@ -1,5 +1,5 @@
-import Carousel from './Common/Carousel/main';
-import CarouselItem from './Common/Carousel/item';
+import Carousel from './common/Carousel/main';
+import CarouselItem from './common/Carousel/item';
 import Player from './Player/Player';
 import Sidebar from './Sidebar/Sidebar';
 

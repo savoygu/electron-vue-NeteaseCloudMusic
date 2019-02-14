@@ -20,6 +20,10 @@ export default {
 
 <style lang="scss">
 @include b(landing) {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
   @include e(content) {
     display: flex;
   }

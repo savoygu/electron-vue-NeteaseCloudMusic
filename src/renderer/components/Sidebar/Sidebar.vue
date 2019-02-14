@@ -9,26 +9,28 @@
         <i>></i>
       </div>
     </div>
-    <ul class="sidebar__nav">
-      <router-link tag="li" class="sidebar__nav-item is-active" to="/">
-        <i class="iconfont icon-wangyiyunyinle"></i>
-        <span>发现音乐</span>
-      </router-link>
-      <router-link tag="li" class="sidebar__nav-item" to="/fm">
-        <i class="iconfont icon-leida"></i>
-        <span>私人FM</span>
-      </router-link>
-      <router-link tag="li" class="sidebar__nav-item" to="/video">
-        <i class="iconfont icon-shipin"></i>
-        <span>视频</span>
-      </router-link>
-      <router-link tag="li" class="sidebar__nav-item" to="/friends">
-        <i class="iconfont icon-pengyou"></i>
-        <span>朋友</span>
-      </router-link>
-    </ul>
-    <div class="sidebar__my-music"></div>
-    <div class="sidebar__song-list"></div>
+    <div class="sidebar__container">
+      <ul class="sidebar__nav">
+        <router-link tag="li" class="sidebar__nav-item is-active" to="/">
+          <i class="iconfont icon-wangyiyunyinle"></i>
+          <span>发现音乐</span>
+        </router-link>
+        <router-link tag="li" class="sidebar__nav-item" to="/fm">
+          <i class="iconfont icon-leida"></i>
+          <span>私人FM</span>
+        </router-link>
+        <router-link tag="li" class="sidebar__nav-item" to="/video">
+          <i class="iconfont icon-shipin"></i>
+          <span>视频</span>
+        </router-link>
+        <router-link tag="li" class="sidebar__nav-item" to="/friends">
+          <i class="iconfont icon-pengyou"></i>
+          <span>朋友</span>
+        </router-link>
+      </ul>
+      <div class="sidebar__my-music"></div>
+      <div class="sidebar__song-list"></div>
+    </div>
   </div>
 </template>
 
@@ -64,7 +66,6 @@ export default {
 @include b(sidebar) {
   width: 200px;
   height: 100vh;
-  color: $--color-text-primary;
   border-right: 1px solid #e5e5e5;
 
   @include e(user) {
@@ -115,6 +116,12 @@ export default {
       border-left-color: $--color-text-active;
       background-color: #f7f7f7;
     }
+  }
+
+  @include e(container) {
+    width: 100%;
+    height: 476px;
+    overflow-y: auto;
   }
 }
 </style>

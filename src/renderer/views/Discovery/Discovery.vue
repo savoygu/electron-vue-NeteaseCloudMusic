@@ -10,7 +10,9 @@
         <router-link tag="li" class="discovery__nav-item" to="/latest">最新音乐</router-link>
       </ul>
     </div>
-    <router-view></router-view>
+    <div class="discovery__container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -41,11 +43,10 @@ export default {
   @include e(nav) {
     display: flex;
     align-items: center;
-    height: 52px;
+    height: 56px;
     margin-left: 15px;
     font-size: 14px;
-    line-height: 52px;
-    color: $--color-text-primary;
+    line-height: 56px;
   }
 
   @include e(nav-item) {
@@ -55,12 +56,20 @@ export default {
 
     &:hover {
       font-weight: 500;
+      color: $--color-text-hover;
     }
 
     @include is(active) {
       font-weight: 500;
+      color: $--color-text-active;
       border-bottom-color: $--color-text-active;
     }
+  }
+
+  @include e(container) {
+    width: 100%;
+    height: 544px;
+    overflow-y: auto;
   }
 }
 </style>

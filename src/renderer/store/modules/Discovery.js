@@ -20,7 +20,7 @@ const actions = {
   },
   async getRecommendSongList({ commit }) {
     const data = await fetch('/personalized');
-    commit(SET_STATE_DATA, { name: 'songList', value: data });
+    commit(SET_STATE_DATA, { name: 'songList', value: data.result });
   }
 };
 
