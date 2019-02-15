@@ -12,7 +12,7 @@
         :autoplay="false"
         mask
       >
-        <carousel-item class="recommend__banner-item" v-for="item in banners">
+        <carousel-item class="recommend__banner-item" v-for="(item, index) in banners" :key="index">
           <div class="recommend__banner-details">
             <img :src="item.imageUrl">
             <span class="recommend__banner-flag">{{item.typeTitle}}</span>
@@ -27,19 +27,19 @@
         <i class="iconfont icon-right"></i>
       </h3>
       <ul class="recommend__song-list">
-        <li class="recommend__song-item" v-for="song in songList.slice(0, 10)">
-          <div class="recommend__song-cover">
-            <span class="recommend__song-view-counts">
-              <i class="iconfont icon-bofangsanjiaoxing"></i>
-              {{Math.floor(song.playCount / 10000)}}万
-            </span>
-            <span class="recommend__song-play-btn">
-              <i class="iconfont icon-bofang"></i>
-            </span>
-            <img :src="song.picUrl">
+        <li class="recommend__song-item">
+          <div class="recommend__song-cover recommend__song-daily">
+            <span class="recommend__song-daily-text">根据你的音乐口味生成每日更新</span>
+            <img src="~@/assets/lover.jpg">
+            <span class="recommend__song-daily-mask"></span>
+            <div class="recommend__song-daily-calender">
+              <i class="iconfont icon-date"></i>
+              <span>{{new Date().getDate()}}</span>
+            </div>
           </div>
-          <p class="recommend__song-title">{{song.name}}</p>
+          <p class="recommend__song-title">每日歌曲推荐</p>
         </li>
+        <recommend-song-item :data="song" :key="song.id" v-for="song in songList.slice(0, 9)"></recommend-song-item>
       </ul>
     </div>
     <!-- 独家放送 -->
@@ -66,13 +66,15 @@
 <script>
 import { Carousel, CarouselItem } from '@/components';
 import { mapActions, mapState } from 'vuex';
+import RecommendSongItem from './RecommendSongItem';
 
 export default {
   name: 'Recommend',
 
   components: {
     Carousel,
-    CarouselItem
+    CarouselItem,
+    RecommendSongItem
   },
 
   data() {
@@ -184,10 +186,6 @@ export default {
     border-bottom-right-radius: 5px;
   }
 
-  @include e(song) {
-    //body
-  }
-
   @include e(song-list) {
     display: flex;
     justify-content: space-between;
@@ -198,25 +196,6 @@ export default {
     flex: 0 0 136px;
     margin-bottom: 36px;
     cursor: pointer;
-  }
-
-  @include e(song-play-btn) {
-    display: none;
-    position: absolute;
-    right: 8px;
-    bottom: 10px;
-    width: 32px;
-    height: 32px;
-    text-align: center;
-    line-height: 32px;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    transition: all 0.3s;
-
-    i {
-      color: $--color-text-active;
-      opacity: 1;
-    }
   }
 
   @include e(song-cover) {
@@ -232,6 +211,62 @@ export default {
         display: block;
       }
     }
+
+    &:hover {
+      .recommend__song-daily-text {
+        display: block;
+      }
+    }
+  }
+
+  @include e(song-daily-text) {
+    display: none;
+    position: absolute;
+    height: 54px;
+    padding: 8px;
+    line-height: 18px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    z-index: 1;
+    transition: all 0.6s;
+  }
+
+  @include e(song-daily-mask) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 165, 0, 0.8);
+    border-radius: 6px;
+  }
+
+  @include e(song-daily-calender) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i,
+    span {
+      color: white;
+    }
+
+    i {
+      font-size: 80px;
+    }
+
+    span {
+      position: absolute;
+      margin-top: 6px;
+      font-size: 24px;
+    }
   }
 
   @include e(song-view-counts) {
@@ -242,6 +277,25 @@ export default {
 
     i {
       font-size: 12px;
+    }
+  }
+
+  @include e(song-play-btn) {
+    display: none;
+    position: absolute;
+    right: 8px;
+    bottom: 10px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transition: all 0.6s;
+
+    i {
+      color: $--color-text-active;
+      opacity: 1;
     }
   }
 
