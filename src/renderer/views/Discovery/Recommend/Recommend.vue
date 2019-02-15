@@ -27,7 +27,7 @@
         <i class="iconfont icon-right"></i>
       </h3>
       <ul class="recommend__song-list">
-        <li class="recommend__song-item">
+        <li class="recommend__song-item" @click="$router.push('/daily')">
           <div class="recommend__song-cover recommend__song-daily">
             <span class="recommend__song-daily-text">根据你的音乐口味生成每日更新</span>
             <img src="~@/assets/lover.jpg">

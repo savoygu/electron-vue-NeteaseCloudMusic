@@ -1,20 +1,25 @@
 <template>
   <div class="landing">
-    <div class="landing__content">
+    <div class="landing__container">
       <sidebar/>
-      <router-view></router-view>
+      <div class="landing__content">
+        <div class="landing__toolsbar">
+          <toolsbar/>
+        </div>
+        <router-view></router-view>
+      </div>
     </div>
     <player/>
   </div>
 </template>
 
 <script>
-import { Sidebar, Player } from '@/components';
+import { Sidebar, Player, Toolsbar } from '@/components';
 
 export default {
-  name: 'landing',
+  name: 'Landing',
 
-  components: { Sidebar, Player }
+  components: { Sidebar, Player, Toolsbar }
 };
 </script>
 
@@ -24,8 +29,17 @@ export default {
   height: 100vh;
   overflow: hidden;
 
-  @include e(content) {
+  @include e(container) {
     display: flex;
+  }
+
+  @include e(content) {
+    flex: 0 0 800px;
+  }
+
+  @include e(toolsbar) {
+    position: absolute;
+    right: 0;
   }
 }
 </style>

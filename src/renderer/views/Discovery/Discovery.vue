@@ -38,8 +38,6 @@ export default {
 
 <style lang="scss">
 @include b(discovery) {
-  flex: 0 0 800px;
-
   @include e(nav) {
     display: flex;
     align-items: center;

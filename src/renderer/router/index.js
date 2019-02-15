@@ -51,6 +51,10 @@ export default new Router({
               component: require('@/views/Discovery/Latest/Latest.vue').default
             }
           ]
+        },
+        {
+          path: '/daily',
+          component: require('@/views/Discovery/Recommend/Daily').default
         }
       ]
     },
