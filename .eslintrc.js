@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   // parser: 'vue-eslint-parser',
+  parser: 'babel-eslint',
   parserOptions: {
     // parser: 'babel-eslint',
     sourceType: 'module'
@@ -10,17 +10,11 @@ module.exports = {
     browser: true,
     node: true
   },
-  extends: [
-    'airbnb-base'
-    // 'plugin:vue/recommended'
-  ],
+  extends: ['airbnb-base'],
   globals: {
     __static: true
   },
-  plugins: [
-    'html'
-    // 'vue'
-  ],
+  plugins: ['html'],
   rules: {
     'global-require': 0,
     'import/no-unresolved': 0,
@@ -50,6 +44,8 @@ module.exports = {
         functions: 'ignore'
       }
     ],
-    'linebreak-style': 0
+    'linebreak-style': 0,
+    'consistent-return': 0,
+    'object-curly-newline': 0
   }
 };

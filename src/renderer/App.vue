@@ -5,8 +5,20 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
-  name: 'electron-vue-neteasecloudmusic'
+  name: 'electron-vue-neteasecloudmusic',
+
+  methods: {
+    ...mapActions('User', [
+      'signin'
+    ])
+  },
+
+  async created() {
+    await this.signin();
+  }
 };
 </script>
 

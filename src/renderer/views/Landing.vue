@@ -41,5 +41,11 @@ export default {
     position: absolute;
     right: 0;
   }
+
+  @include e(body) {
+    width: 100%;
+    height: 544px;
+    overflow-y: auto;
+  }
 }
 </style>

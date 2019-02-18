@@ -13,3 +13,88 @@ body {
     sans-serif;
   color: $--color-text-primary;
 }
+
+.vuetable {
+  margin: 0 auto;
+
+  tr {
+    &:hover {
+      i.icon-more {
+        display: block;
+      }
+    }
+
+    i {
+      color: $--color-text-secondary;
+
+      &:hover {
+        color: $--color-text-primary;
+      }
+
+      @include is(starred) {
+        color: $--color-text-active;
+      }
+
+      @include is(downloaded) {
+        color: blue;
+      }
+    }
+  }
+
+  td {
+    color: $--color-text-secondary;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .vuetable-th-id,
+  .vuetable-th-starred,
+  .vuetable-th-downloaded {
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  .vuetable-th-name {
+    width: 292px;
+  }
+
+  .vuetable-td-name {
+    display: flex;
+
+    span {
+      max-width: 260px;
+      color: $--color-text-primary;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    i.icon-more {
+      display: none;
+      font-size: 20px;
+    }
+  }
+
+  th.vuetable-th-singer,
+  .vuetable-td-singer {
+    width: 140px;
+    max-width: 140px;
+  }
+
+  .vuetable-th-album,
+  .vuetable-td-album {
+    width: 190px;
+    max-width: 190px;
+  }
+
+  .vuetable-th-duration,
+  .vuetable-td-duration {
+    width: 70px;
+    max-width: 70px;
+  }
+}
+
+.ve-loading {
+}

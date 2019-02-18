@@ -64,8 +64,8 @@
 </template>
 
 <script>
-import { Carousel, CarouselItem } from '@/components';
 import { mapActions, mapState } from 'vuex';
+import { Carousel, CarouselItem } from '@/components';
 import RecommendSongItem from './RecommendSongItem';
 
 export default {

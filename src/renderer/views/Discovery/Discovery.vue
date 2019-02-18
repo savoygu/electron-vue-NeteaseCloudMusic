@@ -10,7 +10,7 @@
         <router-link tag="li" class="discovery__nav-item" to="/latest">最新音乐</router-link>
       </ul>
     </div>
-    <div class="discovery__container">
+    <div class="landing__body">
       <router-view></router-view>
     </div>
   </div>
@@ -62,12 +62,6 @@ export default {
       color: $--color-text-active;
       border-bottom-color: $--color-text-active;
     }
-  }
-
-  @include e(container) {
-    width: 100%;
-    height: 544px;
-    overflow-y: auto;
   }
 }
 </style>
