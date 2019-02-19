@@ -31,6 +31,11 @@ body {
         color: $--color-text-primary;
       }
 
+      &.icon-xindong-1,
+      &.icon-xindong-2 {
+        font-size: 18px;
+      }
+
       @include is(starred) {
         color: $--color-text-active;
       }
@@ -48,7 +53,7 @@ body {
     text-overflow: ellipsis;
   }
 
-  .vuetable-th-id,
+  .vuetable-th-slot-id-slot,
   .vuetable-th-starred,
   .vuetable-th-downloaded {
     &:hover {
@@ -56,14 +61,12 @@ body {
     }
   }
 
-  .vuetable-th-name {
+  .vuetable-th-slot-name-slot {
     width: 292px;
   }
 
-  .vuetable-td-name {
-    display: flex;
-
-    span {
+  .vuetable-slot {
+    .name {
       max-width: 260px;
       color: $--color-text-primary;
       overflow: hidden;
@@ -71,9 +74,37 @@ body {
       text-overflow: ellipsis;
     }
 
-    i.icon-more {
+    .icon-sound {
+      display: none;
+      font-size: 12px;
+    }
+
+    .icon-more {
       display: none;
       font-size: 20px;
+    }
+
+    .vuetable-td-slot-id {
+      @include is(playing) {
+        .id {
+          display: none;
+        }
+
+        .icon-sound {
+          display: block;
+          color: $--color-text-active;
+        }
+      }
+    }
+
+    .vuetable-td-slot-name {
+      display: flex;
+
+      @include is(playing) {
+        .name {
+          color: $--color-text-active;
+        }
+      }
     }
   }
 

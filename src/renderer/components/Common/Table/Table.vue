@@ -1,5 +1,12 @@
 <template>
-  <vuetable v-bind="$attrs" v-on="$listeners" :api-mode="false" :css="css"></vuetable>
+  <vuetable v-bind="$attrs" v-on="$listeners" :api-mode="false" :css="css">
+    <template class="vuetable-td-id" slot="id-slot" slot-scope="props">
+      <slot name="id-slot" v-bind="props"></slot>
+    </template>
+    <template class="vuetable-td-name" slot="name-slot" slot-scope="props">
+      <slot name="name-slot" v-bind="props"></slot>
+    </template>
+  </vuetable>
 </template>
 
 <script>

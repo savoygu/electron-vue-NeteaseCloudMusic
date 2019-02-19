@@ -11,7 +11,27 @@
         :fields="fields"
         :sort-order="sortOrder"
         :data-manager="dataManager"
-      ></ve-table>
+      >
+        <template slot="id-slot" slot-scope="props">
+          <div
+            class="vuetable-td-slot-id"
+            :class="{ 'is-playing': props.rowData.id === currentSong.id }"
+          >
+            <span class="id">{{props.rowData.id}}</span>
+            <i class="iconfont icon-sound"></i>
+          </div>
+        </template>
+        <template slot="name-slot" slot-scope="props">
+          <div
+            class="vuetable-td-slot-name"
+            :class="{ 'is-playing': props.rowData.id === currentSong.id }"
+            @click.right="handleMore(props)"
+          >
+            <span class="name">{{props.rowData.name}}</span>
+            <i class="iconfont icon-more" @click="handleMore(props)"></i>
+          </div>
+        </template>
+      </ve-table>
     </div>
   </div>
 </template>

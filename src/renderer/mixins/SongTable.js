@@ -4,7 +4,10 @@ export default {
   data() {
     return {
       fields: [
-        { name: 'id', title: '' },
+        {
+          name: 'id-slot',
+          title: ''
+        },
         {
           name: 'starred',
           title: '',
@@ -24,20 +27,19 @@ export default {
           }
         },
         {
-          name: 'name',
+          name: 'name-slot',
           title: '音乐标题',
-          sortField: 'name',
-          formatter(value) {
-            return `<span>${value}</span><i class="iconfont icon-more"></i>`;
-          }
+          sortField: 'name'
         },
         { name: 'singer', title: '歌手', sortField: 'singer' },
         { name: 'album', title: '专辑', sortField: 'album' },
-        { name: 'duration', title: '时长', sortField: 'duration' }
+        { name: 'duration', title: '时长', sortField: 'duration' },
+        { name: 'playing', visible: false }
       ],
       sortOrder: [],
       lastSortField: '',
-      lastDirection: ''
+      lastDirection: '',
+      currentSong: {}
     };
   },
 
@@ -66,15 +68,22 @@ export default {
         data: local
       };
     },
-    handleCellClicked({ field, event }) {
+    handleCellClicked({ data, event, field }) {
       if (field.name !== 'name') return;
       if (event.target.tagName !== 'I') return;
       console.log(event.target.tagName); // eslint-disable-line
+
+      this.currentSong = data;
     },
     handleCellRightClicked({ data, event, field, index }) {
       console.log(data, event, field, index); // eslint-disable-line
+
+      this.currentSong = data;
     },
     showLoader() {},
-    hideLoader() {}
+    hideLoader() {},
+    handleMore({ rowData }) {
+      this.currentSong = rowData;
+    }
   }
 };
