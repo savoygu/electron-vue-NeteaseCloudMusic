@@ -17,14 +17,18 @@ export default {
               : '<i class="iconfont icon-xindong-1"></i>';
           }
         },
+        // {
+        //   name: 'downloaded',
+        //   title: '',
+        //   formatter(value) {
+        //     return value
+        //       ? '<i class="is-downloaded iconfont icon-correct"></i>'
+        //       : '<i class="iconfont icon-xiazai"></i>';
+        //   }
+        // },
         {
-          name: 'downloaded',
-          title: '',
-          formatter(value) {
-            return value
-              ? '<i class="is-downloaded iconfont icon-correct"></i>'
-              : '<i class="iconfont icon-xiazai"></i>';
-          }
+          name: 'downloaded-slot',
+          title: ''
         },
         {
           name: 'name-slot',

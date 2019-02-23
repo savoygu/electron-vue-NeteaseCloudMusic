@@ -41,7 +41,7 @@ body {
       }
 
       @include is(downloaded) {
-        color: blue;
+        color: #507daf;
       }
     }
   }

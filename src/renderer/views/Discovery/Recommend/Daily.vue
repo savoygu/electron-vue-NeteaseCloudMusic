@@ -11,6 +11,7 @@
         :fields="fields"
         :sort-order="sortOrder"
         :data-manager="dataManager"
+        :slot-columns="['id-slot', 'downloaded-slot', 'name-slot']"
       >
         <template slot="id-slot" slot-scope="props">
           <div
@@ -19,6 +20,17 @@
           >
             <span class="id">{{props.rowData.id}}</span>
             <i class="iconfont icon-sound"></i>
+          </div>
+        </template>
+        <template slot="downloaded-slot" slot-scope="props">
+          <div class="vuetable-td-slot-downloaded">
+            <i
+              class="iconfont"
+              :class="{
+                'is-downloaded icon-correct': props.rowData.downloaded,
+                'icon-xiazai': ! props.rowData.downloaded
+              }"
+            ></i>
           </div>
         </template>
         <template slot="name-slot" slot-scope="props">
@@ -39,14 +51,14 @@
 <script>
 import { mapActions, mapState } from 'vuex';
 import { VeTable } from '@/components';
-import SongTable from '@/mixins/SongTable';
+import SongListTable from '@/mixins/SongListTable';
 
 export default {
   name: 'Daily',
 
   components: { VeTable },
 
-  mixins: [SongTable],
+  mixins: [SongListTable],
 
   data() {
     return {};
