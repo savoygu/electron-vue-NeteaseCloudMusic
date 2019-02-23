@@ -74,9 +74,8 @@ body {
       text-overflow: ellipsis;
     }
 
-    .icon-sound {
+    .icon-sound-loud {
       display: none;
-      font-size: 12px;
     }
 
     .icon-more {
@@ -90,7 +89,7 @@ body {
           display: none;
         }
 
-        .icon-sound {
+        .icon-sound-loud {
           display: block;
           color: $--color-text-active;
         }

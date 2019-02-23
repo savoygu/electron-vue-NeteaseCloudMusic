@@ -2,22 +2,22 @@
   <div class="toolsbar">
     <div class="toolsbar__nav">
       <span class="toolsbar__icon">
-        <i class="iconfont icon-left"></i>
+        <i class="iconfont icon-arrow-left"></i>
       </span>
       <span class="toolsbar__icon is-disabled">
-        <i class="iconfont icon-right"></i>
+        <i class="iconfont icon-arrow-right"></i>
       </span>
     </div>
     <div class="toolsbar__search">
-      <i class="toolsbar__search-icon iconfont icon-sousuo"></i>
+      <i class="toolsbar__search-icon iconfont icon-search"></i>
       <input type="text">
       <i class="toolsbar__search-clear iconfont icon-chahao"></i>
     </div>
     <span class="toolsbar__icon">
-      <i class="toolsbar__settings iconfont icon-zhankai"></i>
+      <i class="toolsbar__settings iconfont icon-unfold"></i>
     </span>
     <span class="toolsbar__icon">
-      <i class="toolsbar__letter iconfont icon-xinfeng"></i>
+      <i class="toolsbar__letter iconfont icon-envelope"></i>
     </span>
   </div>
 </template>

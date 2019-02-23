@@ -19,7 +19,7 @@
           @click.stop="throttledArrowClick(activeIndex - 1)"
           class="carousel__arrow carousel__arrow--left"
         >
-          <i class="iconfont icon-left"></i>
+          <i class="iconfont icon-arrow-left"></i>
         </button>
       </transition>
       <transition name="carousel-arrow-right">
@@ -32,7 +32,7 @@
           @click.stop="throttledArrowClick(activeIndex + 1)"
           class="carousel__arrow carousel__arrow--right"
         >
-          <i class="iconfont icon-right"></i>
+          <i class="iconfont icon-arrow-right"></i>
         </button>
       </transition>
       <slot></slot>

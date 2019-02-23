@@ -41,7 +41,7 @@ export default {
         descendingIcon: 'iconfont icon-chevrondown',
         // ascendingClass: '',
         // descendingClass: '',
-        sortableIcon: 'iconfont icon-ArtboardCopy',
+        sortableIcon: 'iconfont icon-chevron',
         // detailRowClass: '',
         // handleIcon: '',
         renderIcon(classes) {

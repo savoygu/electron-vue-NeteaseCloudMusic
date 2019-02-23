@@ -20,11 +20,11 @@
           <span>私人FM</span>
         </router-link>
         <router-link tag="li" class="sidebar__nav-item" to="/video">
-          <i class="iconfont icon-shipin"></i>
+          <i class="iconfont icon-video"></i>
           <span>视频</span>
         </router-link>
         <router-link tag="li" class="sidebar__nav-item" to="/friends">
-          <i class="iconfont icon-pengyou"></i>
+          <i class="iconfont icon-friends"></i>
           <span>朋友</span>
         </router-link>
       </ul>

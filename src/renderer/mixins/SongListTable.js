@@ -13,8 +13,8 @@ export default {
           title: '',
           formatter(value) {
             return value
-              ? '<i class="is-starred iconfont icon-xindong-2"></i>'
-              : '<i class="iconfont icon-xindong-1"></i>';
+              ? '<i class="is-starred iconfont icon-heart"></i>'
+              : '<i class="iconfont icon-heart-empty"></i>';
           }
         },
         // {
@@ -23,7 +23,7 @@ export default {
         //   formatter(value) {
         //     return value
         //       ? '<i class="is-downloaded iconfont icon-correct"></i>'
-        //       : '<i class="iconfont icon-xiazai"></i>';
+        //       : '<i class="iconfont icon-download"></i>';
         //   }
         // },
         {

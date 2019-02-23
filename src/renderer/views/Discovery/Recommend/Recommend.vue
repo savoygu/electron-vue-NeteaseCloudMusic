@@ -24,7 +24,7 @@
     <div class="recommend__song">
       <h3 class="recommend__title">
         <span>推荐歌单</span>
-        <i class="iconfont icon-right"></i>
+        <i class="iconfont icon-arrow-right"></i>
       </h3>
       <ul class="recommend__song-list">
         <li class="recommend__song-item" @click="$router.push('/daily')">
@@ -46,7 +46,7 @@
     <div class="recommend__unique">
       <h3 class="recommend__title">
         <span>独家放送</span>
-        <i class="iconfont icon-right"></i>
+        <i class="iconfont icon-arrow-right"></i>
       </h3>
       <ul class="recommend__unique-list">
         <li class="recommend__unique-item"></li>

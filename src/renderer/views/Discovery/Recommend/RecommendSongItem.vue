@@ -2,11 +2,11 @@
   <li class="recommend__song-item">
     <div class="recommend__song-cover">
       <span class="recommend__song-view-counts">
-        <i class="iconfont icon-bofangsanjiaoxing"></i>
+        <i class="iconfont icon-play"></i>
         {{Math.floor(data.playCount / 10000)}}万
       </span>
       <span class="recommend__song-play-btn">
-        <i class="iconfont icon-bofang"></i>
+        <i class="iconfont icon-play-empty"></i>
       </span>
       <img :src="data.picUrl">
     </div>

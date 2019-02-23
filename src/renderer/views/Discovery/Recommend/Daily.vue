@@ -1,7 +1,12 @@
 <template>
   <div class="daily landing__body">
     <div class="daily__title">每日推荐歌曲</div>
-    <div class="daily__btn-group"></div>
+    <div class="daily__btn-group">
+      <ve-button type="danger">播放全部</ve-button>
+      <ve-button plain>
+        <i class="iconfont icon-plus"></i>
+      </ve-button>
+    </div>
     <div class="daily__songs">
       <ve-table
         @vuetable:loading="showLoader"
@@ -19,7 +24,7 @@
             :class="{ 'is-playing': props.rowData.id === currentSong.id }"
           >
             <span class="id">{{props.rowData.id}}</span>
-            <i class="iconfont icon-sound"></i>
+            <i class="iconfont icon-sound-loud"></i>
           </div>
         </template>
         <template slot="downloaded-slot" slot-scope="props">
@@ -28,7 +33,7 @@
               class="iconfont"
               :class="{
                 'is-downloaded icon-correct': props.rowData.downloaded,
-                'icon-xiazai': ! props.rowData.downloaded
+                'icon-download': ! props.rowData.downloaded
               }"
             ></i>
           </div>
@@ -50,13 +55,13 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
-import { VeTable } from '@/components';
+import { VeTable, VeButton, VeButtonGroup } from '@/components';
 import SongListTable from '@/mixins/SongListTable';
 
 export default {
   name: 'Daily',
 
-  components: { VeTable },
+  components: { VeTable, VeButton, VeButtonGroup },
 
   mixins: [SongListTable],
 
